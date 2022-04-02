@@ -40,7 +40,7 @@ def in_main(a_name, choice):
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
         textArea.insert(INSERT, '\n最大价值：'+str(maxvalue))
         textArea.insert(INSERT, "\n耗时：" + stime + 's')
-        textArea.insert(INSERT, '\n序号       重量       价值      解向量\n')
+        textArea.insert(INSERT, '\n序号    重量       价值      解向量\n')
         for i in range(len(w)):
             textArea.insert(INSERT, str(i) + '       ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
 
@@ -134,12 +134,8 @@ def in_main3(a_name, choice):
         textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
-        textArea.insert(INSERT, '\n按单位价值排序后得：\n')
-        for i in range(len(y)):
-            textArea.insert(INSERT, str(y))
-            if i % 5 == 0:
-                textArea.insert(INSERT, '\n')
-        textArea.insert(INSERT, '\n序号       重量       价值         单位价值\n')
+        textArea.insert(INSERT, '\n按单位价值排序后得：' + str(y))
+        textArea.insert(INSERT, '\n序号    重量       价值         单位价值\n')
         for i in range(len(w)):
             textArea.insert(INSERT, str(i+1) + '       '+str(w[i]) + '         ' + str(v[i]) + '           ' + str(x[i]) + '\n')
 
