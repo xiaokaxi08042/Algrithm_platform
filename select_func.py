@@ -62,6 +62,5 @@ def djAlgrithm():
 
 # 日志记录
 def logAlgrithm():
-    choice = 9
     a_name = '算法日志'
-    follow_root.in_main4(a_name, choice)
+    follow_root.in_main4(a_name)

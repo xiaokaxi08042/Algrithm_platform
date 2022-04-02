@@ -10,3 +10,4 @@ def log():
     list = cur.fetchall()
     for i in range(len(list)):
         print(list[i])
+    return list

@@ -11,6 +11,7 @@ from PIL import Image, ImageTk  # 导入图像处理函数库
 from draw_picture import scatter, barh
 
 # 1.算法
+from log import log
 from sort import decrease, increase
 
 
@@ -168,8 +169,9 @@ def in_main4(a_name):
     # 构造文本框
     text = tk.Text(win)
     text.pack(side=LEFT, expand=YES, fill=BOTH)
-
+    list = log()
     # "insert" 索引表示插入光标当前的位置
-    text.insert("insert", "I love ")
-    text.insert("end", "Python.com!")
+    for i in range(len(list)):
+        text.insert("insert", '\n' + str(list[i]))
+    # text.insert("end", "Python.com!")
     win.mainloop()
