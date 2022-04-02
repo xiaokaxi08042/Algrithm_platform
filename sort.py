@@ -13,6 +13,12 @@ def increase(s):
                 t = y[i]
                 y[i] = y[m]
                 y[m] = t
+                t = w[i]
+                w[i] = w[m]
+                w[m] = t
+                t = v[i]
+                v[i] = y[m]
+                v[m] = t
     print("背包容量：", c, "物品个数：", n)
     print("重量:", w)
     print("价值:", v)
@@ -34,6 +40,12 @@ def decrease(s):
                 t = y[i]
                 y[i] = y[m]
                 y[m] = t
+                t = w[i]
+                w[i] = w[m]
+                w[m] = t
+                t = v[i]
+                v[i] = y[m]
+                v[m] = t
     print("背包容量：", c, "物品个数：", n)
     print("重量:", w)
     print("价值:", v)
