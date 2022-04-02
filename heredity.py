@@ -34,7 +34,7 @@ def fitness(C,N,n,W,V,w):
                     s.append(j)
         S.append(s)
         F.append(f)
-    return S,F
+    return S, F
 
 ##适应值函数,B位返回的种族的基因下标，y为返回的最大值
 def best_x(F,S,N):

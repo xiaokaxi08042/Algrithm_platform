@@ -13,6 +13,7 @@ from PIL import Image, ImageTk  # 导入图像处理函数库
 from draw_picture import scatter, barh
 
 # 1.算法
+from heredity import heredity
 from log import log
 from sort import decrease, increase
 
@@ -28,7 +29,7 @@ def in_main(a_name, choice):
         elif choice == 3:
             c, n, w, v, stime, y1, maxvalue = backtrack.Bt(s)
         elif choice == 4:
-            print('lll')
+             c, n, w, v, stime, y1, maxvalue = heredity(s)
 
         time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         search.in_log(time1, a_name, s)
@@ -44,9 +45,9 @@ def in_main(a_name, choice):
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
         textArea.insert(INSERT, '\n最大价值：'+str(maxvalue))
         textArea.insert(INSERT, "\n耗时：" + stime + 's')
-        textArea.insert(INSERT, '\n序号    重量       价值      解向量\n')
+        textArea.insert(INSERT, '\n背包编号    重量       价值      解向量\n')
         for i in range(len(w)):
-            textArea.insert(INSERT, str(i) + '       ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
+            textArea.insert(INSERT, str(i+1) + '       ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
 
     win = tkinter.Tk()  # 构造窗体
     win.geometry('500x400')
@@ -131,7 +132,6 @@ def in_main3(a_name, choice):
         elif choice == 8:
             c, n, w, v, x, y = increase(s)
 
-
         # 显示文本框
         tab = Frame(master=tabBar)
         tabBar.add(tab, text=s)
@@ -142,10 +142,10 @@ def in_main3(a_name, choice):
         textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
-        textArea.insert(INSERT, '\n按单位价值排序后得：' + str(y))
-        textArea.insert(INSERT, '\n序号    重量       价值         单位价值\n')
+        textArea.insert(INSERT, '\n按单位重量价值排序后得：\n')
+        textArea.insert(INSERT, '\n背包编号    重量       价值         单位价值\n')
         for i in range(len(w)):
-            textArea.insert(INSERT, str(i+1) + '       '+str(w[i]) + '         ' + str(v[i]) + '           ' + str(x[i]) + '\n')
+            textArea.insert(INSERT, str(y[i]) + '           '+str(w[i]) + '         ' + str(v[i]) + '           ' + str(x[i]) + '\n')
 
     win = tkinter.Tk()  # 构造窗体
     win.geometry('500x400')
@@ -171,14 +171,23 @@ def in_main3(a_name, choice):
 def in_main4(a_name):
     # 构造窗体
     win = tkinter.Tk()
-    win.geometry('500x400')
+    win.geometry('920x250')
     win.title(a_name)
-    # 构造文本框
-    text = tk.Text(win)
-    text.pack(side=LEFT, expand=YES, fill=BOTH)
+    # # 构造文本框
+    # text = tk.Text(win)
+    # text.pack(side=LEFT, expand=YES, fill=BOTH)
     list = log()
     # "insert" 索引表示插入光标当前的位置
-    for i in range(len(list)):
-        text.insert("insert", '\n' + str(list[i]))
-    # text.insert("end", "Python.com!")
+    # for i in range(len(list)):
+    #     text.insert("insert", '\n' + str(list[i]))
+    # # text.insert("end", "Python.com!")
+    tree = ttk.Treeview(win)  # #创建表格对象
+    tree["columns"] = ("重量", "价值", "解向量")  # #定义列
+    tree.column("重量", width=220)  # #设置列
+    tree.column("价值", width=220)
+    tree.column("解向量", width=220)
+    for num in range(len(list)):
+        i = len(list) - num - 1
+        tree.insert("", num, text=str(num), values=(str(list[i][0]), str(list[i][1]), str(list[i][2])))  # #给第0行添加数据，索引值可重复
+    tree.pack()
     win.mainloop()
