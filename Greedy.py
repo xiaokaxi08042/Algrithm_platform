@@ -3,17 +3,17 @@ import time
 
 
 def Greedy(s):
-    last_time = time.time()
-    c, n, w, v = search.table_data(s)
     x = []
     y = []
     y1 = []
+    last_time = time.time()
+    c, n, w, v = search.table_data(s)
     print("背包容量：", c, "物品个数：", n)
     print("重量:", w)
     print("价值:", v)
-    vw(c, n, w, v, x, y, y1)
-    weight = 0
     value = 0
+    weight = 0
+    vw(c, n, w, v, x, y, y1)
     for i in range(n):
         if w[y[i]-1] + weight < c:
             value += v[y[i]-1]

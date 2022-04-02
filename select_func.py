@@ -14,7 +14,7 @@ def dpAlgrithm():
 # 贪心算法
 def gdAlgrithm():
     choice = 2
-    a_name = '贪心算法'
+    a_name = '贪心算法求解'
     follow_root.in_main(a_name, choice)
 
 
