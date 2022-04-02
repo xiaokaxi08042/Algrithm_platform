@@ -1,6 +1,5 @@
-import time
-
 import DP
+import time
 import search
 import Greedy
 import tkinter
@@ -9,15 +8,14 @@ import tkinter as tk            # 导入GUI界面函数库
 from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import *
+from heredity import heredity
 from PIL import Image, ImageTk  # 导入图像处理函数库
+from sort import decrease, increase
 from draw_picture import scatter, barh
 
+
+
 # 1.算法
-from heredity import heredity
-from log import log
-from sort import decrease, increase
-
-
 def in_main(a_name, choice):
 
     def go(*args):  # 处理事件，*args表示可变参数
@@ -67,7 +65,6 @@ def in_main(a_name, choice):
     tabBar.pack(expand=YES, fill=BOTH)
     textArea = tkinter.Text(master=textContainer)
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
-
     win.mainloop()  # 进入消息循环
 
 
@@ -110,6 +107,7 @@ def in_main2(a_name, choice):
     win.configure(menu=menuBar)
     # 显示窗口
     win.mainloop()
+
 
 # 3.排序
 def in_main3(a_name, choice):
@@ -158,20 +156,15 @@ def in_main3(a_name, choice):
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
     win.mainloop()  # 进入消息循环
+
+
 # 4. 显示日志记录
 def in_main4(a_name):
     # 构造窗体
     win = tkinter.Tk()
     win.geometry('920x250')
     win.title(a_name)
-    # # 构造文本框
-    # text = tk.Text(win)
-    # text.pack(side=LEFT, expand=YES, fill=BOTH)
-    list = log()
-    # "insert" 索引表示插入光标当前的位置
-    # for i in range(len(list)):
-    #     text.insert("insert", '\n' + str(list[i]))
-    # # text.insert("end", "Python.com!")
+    list = search.log()
     tree = ttk.Treeview(win)  # #创建表格对象
     tree["columns"] = ("重量", "价值", "解向量")  # #定义列
     tree.column("重量", width=220)  # #设置列

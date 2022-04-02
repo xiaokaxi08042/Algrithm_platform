@@ -2,6 +2,7 @@
 import sqlite3
 
 
+# 获取表名
 def sqlite_read():
     """python读取sqlite数据库文件
     """
@@ -19,7 +20,7 @@ def sqlite_read():
     return language
 # sqlite_read()
 
-
+#  获取表中数据
 def table_data(s):
     mydb = sqlite3.connect('datafile.db')  # 链接数据库
     cur = mydb.cursor()  # 创建游标cur来执行SQL语句
@@ -40,7 +41,7 @@ def table_data(s):
     return c, n, w, v
 
 
-# 存入日志记录
+# 插入log（日志）表数据
 def in_log(time, s1, s):
     cx = sqlite3.connect('./datafile.db')  # 创建数据库，如果数据库已经存在，则链接数据库；如果数据库不存在，则先创建数据库，再链接该数据库。
     cu = cx.cursor()  # 定义一个游标，以便获得查询对象。
@@ -48,3 +49,16 @@ def in_log(time, s1, s):
     cu.close()  # 关闭游标
     cx.commit()  # 事务提交
     cx.close()  # 关闭数据库
+
+
+# 获取log（日志）表数据
+def log():
+    mydb = sqlite3.connect('datafile.db')  # 链接数据库
+    cur = mydb.cursor()  # 创建游标cur来执行SQL语句
+
+    # 获取表名
+    cur.execute('SELECT * FROM log')
+    list = cur.fetchall()
+    for i in range(len(list)):
+        print(list[i])
+    return list
