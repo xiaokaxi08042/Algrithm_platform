@@ -164,7 +164,7 @@ def in_main3(a_name, choice):
 
     win.mainloop()  # 进入消息循环
 # 4. 显示日志记录
-def in_main4(a_name, choice):
+def in_main4(a_name):
     # 构造窗体
     win = tkinter.Tk()
     win.geometry('500x400')
