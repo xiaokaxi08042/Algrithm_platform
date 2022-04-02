@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="datafile" uuid="f38ef8fb-fac0-4b2a-9dc2-d4916fc7cc89">
+    <data-source source="LOCAL" name="datafile " uuid="ae7e76cb-df93-4b41-bbc0-4d60e5e1314e">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:E:\Algrithm_platform\datafile.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\DELL\PycharmProjects\Algrithm_platform\datafile.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

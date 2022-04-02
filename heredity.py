@@ -136,6 +136,8 @@ def heredity(s):
     plt.show()
     z = [0 for i in range(n)]
     current_time = time.time()
+    for i in S[0]:
+        z[i] = 1
     stime = str(current_time - last_time)
     file_handle = open('result.txt', mode='a')
     file_handle.write('遗传算法\n')
