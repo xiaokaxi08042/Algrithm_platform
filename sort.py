@@ -1,7 +1,7 @@
 from search import table_data
 
 
-def increse(s):
+def increase(s):
     c, n, w, v = table_data(s)
     x, y = vw(c, n, w, v)
     for i in range(len(x)):
@@ -20,7 +20,7 @@ def increse(s):
     return c, n, w, v, x, y
 
 
-def decrese(s):
+def decrease(s):
     c, n, w, v = table_data(s)
     print(c, n)
     print(w, v)
@@ -50,5 +50,5 @@ def vw(c, n, w, v):
     return x, y
 
 
-increse('beibao0.in')
-decrese('beibao0.in')
+# increase('beibao0.in')
+# decrease('beibao0.in')
