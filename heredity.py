@@ -115,10 +115,6 @@ def heredity(s):
     N = 800  ##迭代次数
     Pc = 0.8 ##交配概率
     Pm = 0.05##变异概率
-    # V =[220,208,198,192,180,180,165,162,160,158,155,130,125,122,120,118,115,110,105,101,100,100,98,96,95,90,88,82,80,77,75,73,72,70,69,66,65,63,60,58,56,50,30,20,15,10,8,5,3,1]
-    # W =[80,82,85,70,72,70,66,50,55,25,50,55,40,48,50,32,22,60,30,32,40,38,35,32,25,28,30,22,25,30,45,30,60,50,20,65,20,25,30,10,20,25,15,10,10,10,4,4,2,1]
-    # n = 50##染色体长度
-    # w = 1000
     w, n, W, V = table_data(s)
 
     C = init(m, n)
@@ -138,7 +134,21 @@ def heredity(s):
     print("最大值为：",y)
     plt.plot(Y)
     plt.show()
+    z = [0 for i in range(n)]
     current_time = time.time()
     stime = str(current_time - last_time)
-    return w, n, W, V,stime, W, y
+    file_handle = open('result.txt', mode='a')
+    file_handle.write('遗传算法\n')
+    file_handle.write(s)
+    file_handle.write('  最大值：')
+    file_handle.write(str(y))
+    file_handle.write('  解向量：[')
+    for i in z:
+        file_handle.write(str(i))
+        file_handle.write(',')
+    file_handle.write(']   耗时：')
+    file_handle.write(str(current_time - last_time))
+    file_handle.write('\n')
+    file_handle.close()
+    return w, n, W, V,stime,z, y
 # heredity('s')
