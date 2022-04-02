@@ -86,7 +86,7 @@ menuBar.add_cascade(label="导入数据", menu=shujuMenu)
 menuBar.add_cascade(label="算法求解", menu=suanfaMenu)
 menuBar.add_cascade(label="绘制图形", menu=pictureMenu)
 menuBar.add_cascade(label="排序", menu=sortMenu)
-menuBar.add_cascade(label="日志", menu=logMenu)
+menuBar.add_cascade(label="日志记录", menu=logMenu)
 suanfaMenu.add_command(label="动态规划", command=select_func.dpAlgrithm, background='pink')
 suanfaMenu.add_command(label="贪心算法", command=select_func.gdAlgrithm, background='pink')
 suanfaMenu.add_command(label="回溯算法", command=select_func.btAlgrithm, background='pink')
@@ -99,7 +99,6 @@ sortMenu.add_command(label="递减排序", command=select_func.djAlgrithm, backg
 logMenu.add_command(label="算法日志", command=select_func.logAlgrithm, background='pink')
 
 tabBar = Notebook(master=root)
-
 root.configure(menu=menuBar)
 # 显示窗口
 root.mainloop()

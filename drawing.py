@@ -41,5 +41,5 @@ btn_Show = tk.Button(window,
     command=Show_Img)     # 点击按钮式执行的命令
 btn_Show.pack()    # 按钮位置
 
-运行整体窗口
+# 运行整体窗口
 window.mainloop()

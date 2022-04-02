@@ -11,6 +11,9 @@ from PIL import Image, ImageTk  # 导入图像处理函数库
 from draw_picture import scatter, barh
 
 # 1.算法
+from sort import decrease, increase
+
+
 def in_main(a_name, choice):
 
     def go(*args):  # 处理事件，*args表示可变参数
@@ -37,9 +40,9 @@ def in_main(a_name, choice):
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
         textArea.insert(INSERT, '\n最大价值：'+str(maxvalue))
         textArea.insert(INSERT, "\n耗时：" + stime + 's')
-        textArea.insert(INSERT, '\n重量       价值      解向量\n')
+        textArea.insert(INSERT, '\n序号       重量       价值      解向量\n')
         for i in range(len(w)):
-            textArea.insert(INSERT, str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
+            textArea.insert(INSERT, str(i) + '       ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
 
     win = tkinter.Tk()  # 构造窗体
     win.geometry('500x400')
@@ -110,15 +113,16 @@ def in_main2(a_name, choice):
     btn_Show.pack()  # 按钮位置
     win.mainloop()  # 进入消息循环
 
-#排序
+
+# 排序
 def in_main3(a_name, choice):
 
     def go(*args):  # 处理事件，*args表示可变参数
         s = comboxlist.get()
         if choice == 7:
-            c, n, w, v, stime, y1, maxvalue = DP.Dp(s)
+            c, n, w, v, x, y = decrease(s)
         elif choice == 8:
-            c, n, w, v, stime, y1, maxvalue = Greedy.Greedy(s)
+            c, n, w, v, x, y = increase(s)
 
 
         # 显示文本框
@@ -131,11 +135,9 @@ def in_main3(a_name, choice):
         textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
-        textArea.insert(INSERT, '\n最大价值：'+str(maxvalue))
-        textArea.insert(INSERT, "\n耗时：" + stime + 's')
-        textArea.insert(INSERT, '\n重量       价值      解向量\n')
+        textArea.insert(INSERT, '\n序号       重量       价值         单位价值\n')
         for i in range(len(w)):
-            textArea.insert(INSERT, str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
+            textArea.insert(INSERT, str(i+1) + '       '+str(w[i]) + '         ' + str(v[i]) + '           ' + str(x[i]) + '\n')
 
     win = tkinter.Tk()  # 构造窗体
     win.geometry('500x400')
@@ -157,8 +159,10 @@ def in_main3(a_name, choice):
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
     win.mainloop()  # 进入消息循环
+
+
 # 显示日志记录
-def in_main3(a_name, choice):
+def in_main4(a_name, choice):
     # 构造窗体
     win = tkinter.Tk()
     win.geometry('500x400')
@@ -166,8 +170,7 @@ def in_main3(a_name, choice):
     # 构造文本框
     text = tk.Text(win)
     text.pack(side=LEFT, expand=YES, fill=BOTH)
-
     # "insert" 索引表示插入光标当前的位置
-    text.insert("insert", "I love ")
-    text.insert("end", "Python.com!")
+    text.insert("insert", "算法日志记录：")
+    # text.insert("end", "Python.com!")
     win.mainloop()

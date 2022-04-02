@@ -15,6 +15,7 @@ def bag(n, c, w, v, s, last_time):
             # 背包总容量够放当前物体，遍历前一个状态考虑是否置换
             if j >= w[i - 1] and value[i][j] < value[i - 1][j - w[i - 1]] + v[i - 1]:
                 value[i][j] = value[i - 1][j - w[i - 1]] + v[i - 1]
+
     print("最大价值为：", value[i][j])
     maxvalue = value[i][j]
     file_handle = open('result.txt', mode='a')
@@ -32,6 +33,7 @@ def bag(n, c, w, v, s, last_time):
         else:
             y1[i-1] = 0
         i = i-1
+
     print("解向量为：", y1)
     current_time = time.time()
     stime = str(current_time - last_time)
