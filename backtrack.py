@@ -32,6 +32,7 @@ def Bt(s):
     for i in bestx:
         file_handle.write(str(i))
         file_handle.write(',')
+
     file_handle.write(']   耗时：')
     file_handle.write(str(current_time - last_time))
     stime = str(current_time - last_time)

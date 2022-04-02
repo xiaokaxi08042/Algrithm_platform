@@ -21,7 +21,7 @@ def gdAlgrithm():
 # 回溯算法
 def btAlgrithm():
     choice = 3
-    a_name = '回溯算法'
+    a_name = '回溯算法求解'
     follow_root.in_main(a_name, choice)
 
 
