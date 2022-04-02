@@ -1,3 +1,5 @@
+import time
+
 import DP
 import search
 import Greedy
@@ -19,7 +21,7 @@ def in_main(a_name, choice):
 
     def go(*args):  # 处理事件，*args表示可变参数
         s = comboxlist.get()
-        if choice==1:
+        if choice == 1:
             c, n, w, v, stime, y1, maxvalue = DP.Dp(s)
         elif choice == 2:
             c, n, w, v, stime, y1, maxvalue = Greedy.Greedy(s)
@@ -28,7 +30,8 @@ def in_main(a_name, choice):
         elif choice == 4:
             print('lll')
 
-
+        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        search.in_log(time1, a_name, s)
         # 显示文本框
         tab = Frame(master=tabBar)
         tabBar.add(tab, text=s)
@@ -77,6 +80,8 @@ def in_main2(a_name, choice):
 
     def go(*args):
         s = comboxlist.get()
+        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        search.in_log(time1, a_name, s)
         if choice == 5:
             scatter(s)
         elif choice == 6:
@@ -119,6 +124,8 @@ def in_main3(a_name, choice):
 
     def go(*args):  # 处理事件，*args表示可变参数
         s = comboxlist.get()
+        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        search.in_log(time1, a_name, s)
         if choice == 7:
             c, n, w, v, x, y = decrease(s)
         elif choice == 8:

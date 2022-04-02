@@ -9,7 +9,7 @@ def sqlite_read():
     cur = mydb.cursor()                         # 创建游标cur来执行SQL语句
 
     # 获取表名
-    cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    cur.execute("SELECT name FROM sqlite_master WHERE type='table' and name != 'log'")
     Tables = cur.fetchall()                     # Tables 为元组列表
     # print(Tables)
     language = []
@@ -37,4 +37,14 @@ def table_data(s):
         else:
             w.append(list[i][1])
             v.append(list[i][2])
-    return c,n,w,v
+    return c, n, w, v
+
+
+# 存入日志记录
+def in_log(time, s1, s):
+    cx = sqlite3.connect('./datafile.db')  # 创建数据库，如果数据库已经存在，则链接数据库；如果数据库不存在，则先创建数据库，再链接该数据库。
+    cu = cx.cursor()  # 定义一个游标，以便获得查询对象。
+    cu.execute('insert into log values(?,?,?)', (time, s1, s))
+    cu.close()  # 关闭游标
+    cx.commit()  # 事务提交
+    cx.close()  # 关闭数据库

@@ -1,4 +1,5 @@
 import os
+import time
 import sqlite3
 from tkinter import *
 from tkinter.filedialog import *
@@ -7,6 +8,9 @@ import select_func
 
 
 # 打开文件
+from search import in_log
+
+
 def openfile():
     filePath = askopenfilename()  # 全路径
     fileName = os.path.basename(filePath)  # 文件名
@@ -26,6 +30,8 @@ def openfile():
        textArea.insert(INSERT, line)
     f.close()
     '''
+    time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    in_log(time1, '导入数据', fileName)
     # 右侧滑动条
     scrollBar = Scrollbar(master=textContainer)
     scrollBar.pack(side=RIGHT, fill=Y)
@@ -39,19 +45,14 @@ def openfile():
 def inSql(filePath, fileName, textArea):
     cx = sqlite3.connect('./datafile.db')  # 创建数据库，如果数据库已经存在，则链接数据库；如果数据库不存在，则先创建数据库，再链接该数据库。
     cu = cx.cursor()  # 定义一个游标，以便获得查询对象。
-    print('mao')
-    fileName = "'" + fileName + "'"
-    print(fileName)
-    s = 'create table if not exists ' + fileName + ' (id integer primary key,w integer,v integer )'
-    print(s)
-    cu.execute(s)  # 创建表，此处须修改表名
+    cu.execute('create table if not exists ' + "'" + fileName + "'" + ' (id integer primary key,w integer,v integer )')  # 创建表，此处须修改表名
     f = open(filePath, mode='r', encoding="utf-8")
     list = []
     i = 0
     for line in f.readlines():
         textArea.insert(INSERT, line)
         list.append(line.strip().split(' '))
-        cu.execute('insert into '+ fileName + ' values(?,?,?)', (i, list[i][0], list[i][1]))
+        cu.execute('insert into '+ "'" + fileName + "'" + ' values(?,?,?)', (i, list[i][0], list[i][1]))
         i += 1
     f.close()  # 关闭文件
     cu.close()  # 关闭游标
