@@ -50,14 +50,14 @@ def zzAlgrithm():
 def dzAlgrithm():
     choice = 7
     a_name = '递增排序'
-    follow_root.in_main2(a_name, choice)
+    follow_root.in_main3(a_name, choice)
 
 
 # 递减排序
 def djAlgrithm():
     choice = 8
     a_name = '递减排序'
-    follow_root.in_main2(a_name, choice)
+    follow_root.in_main3(a_name, choice)
 
 
 # 日志记录
