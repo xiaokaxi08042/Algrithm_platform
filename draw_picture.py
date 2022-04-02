@@ -23,7 +23,7 @@ def scatter(s):
     plt.legend()
     plt.yticks(())
     plt.title('散点图')
-    plt.savefig('./picture/scatter_'+ s +'.png')  # 保存图片
+    plt.savefig('./picture/'+ s +'.png')  # 保存图片
     plt.show()
 
 
@@ -37,5 +37,5 @@ def barh(s):
     # print(y)
     y_pos = np.arange(len(w)) + 1
     ax.barh(y_pos, y, color='b', align="center")
-    plt.savefig('./picture/barch_'+ s +'.png')  # 保存图片
+    plt.savefig('./picture/'+ s +'.png')  # 保存图片
     plt.show()
