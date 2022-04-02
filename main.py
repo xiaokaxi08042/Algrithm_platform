@@ -1,5 +1,3 @@
-# import tkinter
-# from tkinter import messagebox
 import os
 import sqlite3
 from tkinter import *
@@ -63,7 +61,7 @@ def inSql(filePath, fileName, textArea):
 
 # 创建窗口：实例化一个窗口对象。
 root = Tk()
-root.geometry('300x350')
+root.geometry('500x400')
 root.title('0/1背包算法求解平台')
 # root.configure(background='pink')
 
@@ -72,6 +70,7 @@ shujuMenu = Menu(menuBar, tearoff=0)
 suanfaMenu = Menu(menuBar, tearoff=0)
 pictureMenu = Menu(menuBar, tearoff=0)
 sortMenu = Menu(menuBar, tearoff=0)
+logMenu = Menu(menuBar, tearoff=0)
 
 bendiMenu = Menu(shujuMenu)
 dpMenu = Menu(suanfaMenu)
@@ -87,6 +86,7 @@ menuBar.add_cascade(label="导入数据", menu=shujuMenu)
 menuBar.add_cascade(label="算法求解", menu=suanfaMenu)
 menuBar.add_cascade(label="绘制图形", menu=pictureMenu)
 menuBar.add_cascade(label="排序", menu=sortMenu)
+menuBar.add_cascade(label="日志", menu=logMenu)
 suanfaMenu.add_command(label="动态规划", command=select_func.dpAlgrithm, background='pink')
 suanfaMenu.add_command(label="贪心算法", command=select_func.gdAlgrithm, background='pink')
 suanfaMenu.add_command(label="回溯算法", command=select_func.btAlgrithm, background='pink')
@@ -96,6 +96,7 @@ pictureMenu.add_command(label="散点图", command=select_func.sdAlgrithm, backg
 pictureMenu.add_command(label="柱状图", command=select_func.zzAlgrithm, background='pink')
 sortMenu.add_command(label="递增排序", command=select_func.dzAlgrithm, background='pink')
 sortMenu.add_command(label="递减排序", command=select_func.djAlgrithm, background='pink')
+logMenu.add_command(label="算法日志", command=select_func.logAlgrithm, background='pink')
 
 tabBar = Notebook(master=root)
 

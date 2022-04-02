@@ -1,21 +1,40 @@
-# python 获取sqlite3数据库mydb.db中的表名和表字段名
-
+# -*- coding: UTF-8 -*-
 import sqlite3
 
 
-def huoqu():
-        conn = sqlite3.connect('data.db')
-        cu = conn.cursor()
+def sqlite_read():
+    """python读取sqlite数据库文件
+    """
+    mydb = sqlite3.connect('datafile.db')       # 链接数据库
+    cur = mydb.cursor()                         # 创建游标cur来执行SQL语句
 
-        # 获取表名，保存在tab_name列表
-        # cu.execute('select * from' + "'" + 'beibao0.in' +"'")
-        cu.execute("select name from sqlite_master where type='table'")
-        tab_name = cu.fetchall()
-        print(tab_name)
-        # 之所以保存为元组，一是可避免误操作修改字段名，二是元组巧用转化字符串，可
-        # 直接用于SQL的insert语句中。例如下面代码可得到第一个表的带括号字段名集合：
-        '''
-          sql_col_name=str(col_names[0]).replace('\'','')
-        '''
+    # 获取表名
+    cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    Tables = cur.fetchall()                     # Tables 为元组列表
+    # print(Tables)
+    language = []
+    for i in range(len(Tables)):
+        language.append(Tables[i][0])
+    # print(language)
+    return language
+# sqlite_read()
 
 
+def table_data(s):
+    mydb = sqlite3.connect('datafile.db')  # 链接数据库
+    cur = mydb.cursor()  # 创建游标cur来执行SQL语句
+
+    # 获取表的内容
+    cur.execute('SELECT * FROM' + "'" + s + "'")
+    list = cur.fetchall()  # Tables 为元组列表
+    # print(list)
+    w = []
+    v = []
+    for i in range(len(list)):
+        if i == 0:
+            c = list[i][1]
+            n = list[i][2]
+        else:
+            w.append(list[i][1])
+            v.append(list[i][2])
+    return c,n,w,v

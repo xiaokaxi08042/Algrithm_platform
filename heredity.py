@@ -2,6 +2,8 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 ##初始化,N为种群规模，n为染色体长度
+from search import table_data
+
 
 def init(N,n):
     C = []
@@ -103,19 +105,16 @@ def vari(X, m, n, p):
                 X[i][j] = np.random.randint(0,2)
 
     return X
-
+s = 'beibao1.in'
 m = 8##规模
-N = 800  ##迭代次数
 Pc = 0.8 ##交配概率
 Pm = 0.05##变异概率
-V =[220,208,198,192,180,180,165,162,160,158,155,130,125,122,120,118,115,110,105,101,100,100,98,96,95,90,88,82,80,77,75,73,72,70,69,66,65,63,60,58,56,50,30,20,15,10,8,5,3,1]
-W =[80,82,85,70,72,70,66,50,55,25,50,55,40,48,50,32,22,60,30,32,40,38,35,32,25,28,30,22,25,30,45,30,60,50,20,65,20,25,30,10,20,25,15,10,10,10,4,4,2,1]
+w, N, W, V = table_data(s)
 n = len(W)##染色体长度
-w = 1000
 
 C = init(m, n)
 S,F  = fitness(C,m,n,W,V,w)
-B ,y = best_x(F,S,m)
+B,y = best_x(F,S,m)
 Y =[y]
 for i in range(N):
     p = rate(F)
@@ -127,6 +126,7 @@ for i in range(N):
     if y1 > y:
         y = y1
     Y.append(y)
+print(S)
 print("最大值为：",y)
 
 plt.plot(Y)
