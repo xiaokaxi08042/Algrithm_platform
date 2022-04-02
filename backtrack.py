@@ -39,7 +39,7 @@ def Bt(s):
     file_handle.write('\n')
     file_handle.close()
     # x = [0 for i in range(n)]
-    return c, n, w, v, stime, y1, bestV
+    return c, n, w, v, stime, bestx, bestV
 
 
 def backtrack(i, w, v, n, c, x):
