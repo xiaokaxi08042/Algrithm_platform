@@ -22,14 +22,6 @@ def openfile():
     textArea = Text(master=textContainer)
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
     inSql(filePath, fileName, textArea)
-    '''
-    f = open(filePath, mode='r', encoding="utf-8")
-    while True:
-       line = f.readline()
-       if not line : break
-       textArea.insert(INSERT, line)
-    f.close()
-    '''
     time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     in_log(time1, '导入数据', fileName)
     # 右侧滑动条

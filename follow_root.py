@@ -45,9 +45,9 @@ def in_main(a_name, choice):
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
         textArea.insert(INSERT, '\n最大价值：'+str(maxvalue))
         textArea.insert(INSERT, "\n耗时：" + stime + 's')
-        textArea.insert(INSERT, '\n背包编号    重量       价值      解向量\n')
+        textArea.insert(INSERT, '\n背包编号   重量       价值      解向量\n')
         for i in range(len(w)):
-            textArea.insert(INSERT, str(i+1) + '       ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
+            textArea.insert(INSERT, str(i+1) + '          ' + str(w[i]) + '         ' + str(v[i]) + '           ' + str(y1[i]) + '\n')
 
     win = tkinter.Tk()  # 构造窗体
     win.geometry('500x400')
@@ -73,52 +73,43 @@ def in_main(a_name, choice):
 
 # 2.绘图
 def in_main2(a_name, choice):
-    win = tk.Tk()  # 构造窗体
-    win.geometry('500x400')
+    win = tk.Toplevel()
+    win.geometry('850x623')
     win.title(a_name)
-    global img_png, s  # 定义全局变量 图像的
-    # var = tk.StringVar()
 
-    def go(*args):
-        s = comboxlist.get()
-        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        search.in_log(time1, a_name, s)
+    def show():
         if choice == 5:
             scatter(s)
         elif choice == 6:
             barh(s)
+        global img_png  # 定义全局变量 图像的
 
-    def Open_Img():
-        global img_png
-        # s = comboxlist.get()
-        Img = Image.open('./picture/'+ s +'.png')
-        img_png = ImageTk.PhotoImage(Img)
+        def Show_Img():
+            global img_png
+            Img = Image.open('./picture/' + s + '.png')
+            img_png = ImageTk.PhotoImage(Img)
+            label_Img = tk.Label(win, image=img_png)
+            label_Img.pack(ipady=45)
 
-    def Show_Img():
-        global img_png
-        label_Img = tk.Label(win, image=img_png)
-        label_Img.pack()
+        # 创建显示图像按钮
+        btn_Show = tk.Button(win,
+                             text='显示图像',  # 显示在按钮上的文字
+                             width=15, height=2,
+                             command=Show_Img)  # 点击按钮式执行的命令
+        btn_Show.pack()  # 按钮位置
 
-
-    comvalue = tkinter.StringVar()  # 窗体自带的文本，新建一个值
-    comboxlist = ttk.Combobox(win, textvariable=comvalue)  # 初始化
-    comboxlist["values"] = search.sqlite_read()
-    # comboxlist.current(0)  # 选择第一个
-    comboxlist.bind("<<ComboboxSelected>>", go)  # 绑定事件,(下拉列表框被选中时，绑定go()函数)
-    comboxlist.pack()
-    # 创建打开图像按钮
-    btn_Open = tk.Button(win,
-                         text='打开图像',  # 显示在按钮上的文字
-                         width=15, height=2,
-                         command=Open_Img)  # 点击按钮式执行的命令
-    btn_Open.pack()  # 按钮位置
-    # 创建显示图像按钮
-    btn_Show = tk.Button(win,
-                         text='显示图像',  # 显示在按钮上的文字
-                         width=15, height=2,
-                         command=Show_Img)  # 点击按钮式执行的命令
-    btn_Show.pack()  # 按钮位置
-    win.mainloop()  # 进入消息循环
+    menuBar = Menu(win)
+    selectfMenu = Menu(menuBar, tearoff=0)
+    list = search.sqlite_read()
+    for i in range(len(list)):
+        fileMune = Menu(selectfMenu)
+    menuBar.add_cascade(label="选择数据", menu=selectfMenu)
+    for i in range(len(list)):
+        s = list[i]
+        selectfMenu.add_command(label=s, command=show, background='pink')
+    win.configure(menu=menuBar)
+    # 显示窗口
+    win.mainloop()
 
 # 3.排序
 def in_main3(a_name, choice):

@@ -1,8 +1,4 @@
 import time
-import tkinter
-from tkinter import ttk
-from tkinter import *
-from tkinter.ttk import *
 import search
 
 
