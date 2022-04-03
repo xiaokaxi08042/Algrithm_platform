@@ -1,8 +1,7 @@
-import sqlite3
 import numpy as np
 import matplotlib.pyplot as plt
-
 from search import table_data
+
 
 # 散点图
 def scatter(s):
@@ -16,8 +15,8 @@ def scatter(s):
     plt.xlim(xmax=200, xmin=0)
     plt.ylim(ymax=150, ymin=0)
     c,n,w,v = table_data(s)
-    colors = 'blue'  #  点的颜色
-    area = np.pi * 3**2 # 点面积
+    colors = 'blue'  # 点的颜色
+    area = np.pi * 3**2  # 点面积
     # for i in range(len(w)):
     plt.scatter(w, v, s=area, c=colors, alpha=0.1, label=' ')
     plt.legend()
@@ -25,6 +24,7 @@ def scatter(s):
     plt.title('散点图')
     plt.savefig('./src/picture/'+ s +'.png')  # 保存图片
     plt.show()
+
 
 # 柱形图
 def barh(s):
@@ -37,5 +37,5 @@ def barh(s):
     # print(y)
     y_pos = np.arange(len(w)) + 1
     ax.barh(y_pos, y, color='b', align="center")
-    plt.savefig('./src/picture/'+ s +'.png')  # 保存图片
+    plt.savefig('./src/picture/' + s + '.png')  # 保存图片
     plt.show()

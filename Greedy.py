@@ -15,7 +15,7 @@ def Greedy(s):
     value = 0
     weight = 0
     vw(c, n, w, v, x, y, y1)
-    for i in range(n):
+    for i in range(len(w)):
         if w[y[i]-1] + weight < c:
             value += v[y[i]-1]
             weight += w[y[i]-1]
