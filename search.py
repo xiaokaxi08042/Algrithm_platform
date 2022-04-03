@@ -20,6 +20,7 @@ def sqlite_read():
     return language
 # sqlite_read()
 
+
 #  获取表中数据
 def table_data(s):
     mydb = sqlite3.connect('datafile.db')  # 链接数据库

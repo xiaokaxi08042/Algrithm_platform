@@ -11,8 +11,6 @@ bestx = None
 def Bt(s):
     last_time = time.time()
     c, n, w, v = search.table_data(s)
-    y1 = []
-    y = []
     print("背包容量：", c, "物品个数：", n)
     x = [0 for i in range(n)]
     # print(x)

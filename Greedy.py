@@ -2,6 +2,7 @@ import search
 import time
 
 
+# 贪心算法
 def Greedy(s):
     x = []
     y = []
@@ -47,7 +48,7 @@ def vw(c, n, w, v, x, y, y1):
         x.append(v[i]/w[i])
         y.append(i+1)
         y1.append(0)
-    sort(x,y)
+    sort(x, y)
     print('递减排序：', y)
 
 

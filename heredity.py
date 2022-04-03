@@ -18,12 +18,12 @@ def init(N,n):
     return C
 
 
-##评估函数
+# 评估函数
 # x(i)取值为1表示被选中，取值为0表示未被选中
 # w(i)表示各个分量的重量，v（i）表示各个分量的价值，w表示最大承受重量
-def fitness(C,N,n,W,V,w):
-    S = []##用于存储被选中的下标
-    F = []## 用于存放当前该个体的最大价值
+def fitness(C, N, n, W, V, w):
+    S = []  # 用于存储被选中的下标
+    F = []  # 用于存放当前该个体的最大价值
     for i in range(N):
         s = []
         h = 0  # 重量
@@ -111,16 +111,16 @@ def vari(X, m, n, p):
 
 def heredity(s):
     last_time = time.time()
-    m = 8##规模
-    N = 800  ##迭代次数
-    Pc = 0.8 ##交配概率
-    Pm = 0.05##变异概率
+    m = 8  # 规模
+    N = 800  # 迭代次数
+    Pc = 0.8  # 交配概率
+    Pm = 0.05  # 变异概率
     w, n, W, V = table_data(s)
 
     C = init(m, n)
-    S,F  = fitness(C,m,n,W,V,w)
-    B ,y = best_x(F,S,m)
-    Y =[y]
+    S,F = fitness(C,m,n,W,V,w)
+    B, y = best_x(F,S,m)
+    Y = [y]
     for i in range(N):
         p = rate(F)
         C = chose(p, C, m, n)
@@ -152,5 +152,5 @@ def heredity(s):
     file_handle.write(str(current_time - last_time))
     file_handle.write('\n')
     file_handle.close()
-    return w, n, W, V,stime,z, y
+    return w, n, W, V, stime, z, y
 # heredity('s')
