@@ -2,9 +2,9 @@ import time
 import numpy as np
 from search import table_data
 import matplotlib.pyplot as plt
+
+
 # 初始化,N为种群规模，n为染色体长度
-
-
 def init(N, n):
     C = []
     for i in range(N):
