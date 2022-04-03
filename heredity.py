@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 
 
 # 初始化,N为种群规模，n为染色体长度
-def init(N,n):
+def init(N, n):
     C = []
     for i in range(N):
         c = []
         for j in range(n):
-            a = np.random.randint(0,2)
+            a = np.random.randint(0, 2)
             c.append(a)
         C.append(c)
     return C
@@ -29,7 +29,7 @@ def fitness(C, N, n, W, V, w):
         for j in range(n):
             if C[i][j] == 1:
                 if h+W[j] <= w:
-                    h=h+W[j]
+                    h = h+W[j]
                     f = f+V[j]
                     s.append(j)
         S.append(s)
@@ -105,7 +105,7 @@ def vari(X, m, n, p):
         for j in range(n):
             q = np.random.rand()
             if q < p:
-                X[i][j] = np.random.randint(0,2)
+                X[i][j] = np.random.randint(0, 2)
 
     return X
 
@@ -120,7 +120,7 @@ def heredity(s):
 
     C = init(m, n)
     S, F = fitness(C, m, n, W, V, w)
-    B , y = best_x(F, S, m)
+    B, y = best_x(F, S, m)
     Y = [y]
     for i in range(N):
         p = rate(F)
