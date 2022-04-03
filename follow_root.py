@@ -119,9 +119,9 @@ def in_main3(a_name, choice):
         time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         search.in_log(time1, a_name, s)
         if choice == 7:
-            c, n, w, v, x, y = decrease(s)
-        elif choice == 8:
             c, n, w, v, x, y = increase(s)
+        elif choice == 8:
+            c, n, w, v, x, y = decrease(s)
 
         # 显示文本框
         tab = Frame(master=tabBar)
