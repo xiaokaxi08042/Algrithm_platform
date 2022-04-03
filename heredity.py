@@ -1,18 +1,16 @@
 import time
-
 import numpy as np
-import random
-import matplotlib.pyplot as plt
-##初始化,N为种群规模，n为染色体长度
 from search import table_data
+import matplotlib.pyplot as plt
+# 初始化,N为种群规模，n为染色体长度
 
 
-def init(N,n):
+def init(N, n):
     C = []
     for i in range(N):
         c = []
         for j in range(n):
-            a = np.random.randint(0,2)
+            a = np.random.randint(0, 2)
             c.append(a)
         C.append(c)
     return C
@@ -29,28 +27,30 @@ def fitness(C, N, n, W, V, w):
         h = 0  # 重量
         f = 0  # 价值
         for j in range(n):
-            if C[i][j]==1:
-                if h+W[j]<=w:
-                    h=h+W[j]
+            if C[i][j] == 1:
+                if h+W[j] <= w:
+                    h = h+W[j]
                     f = f+V[j]
                     s.append(j)
         S.append(s)
         F.append(f)
-    return S,F
+    return S, F
 
-##适应值函数,B位返回的种族的基因下标，y为返回的最大值
-def best_x(F,S,N):
+
+# 适应值函数,B位返回的种族的基因下标，y为返回的最大值
+def best_x(F, S, N):
     y = 0
     x = 0
     B = [0]*N
     for i in range(N):
-        if y<F[i]:
+        if y < F[i]:
             x = i
         y = F[x]
         B = S[x]
-    return B,y
+    return B, y
 
-## 计算比率
+
+# 计算比率
 def rate(x):
     p = [0] * len(x)
     s = 0
@@ -60,7 +60,8 @@ def rate(x):
         p[i] = x[i] / s
     return p
 
-## 选择
+
+# 选择
 def chose(p, X, m, n):
     X1 = X
     r = np.random.rand(m)
@@ -73,7 +74,8 @@ def chose(p, X, m, n):
                 break
     return X1
 
-##交配
+
+# 交配
 def match(X, m, n, p):
     r = np.random.rand(m)
     k = [0] * m
@@ -89,22 +91,21 @@ def match(X, m, n, p):
             elif k[v] == 0:
                 v = i
         if k[u] and k[v]:
-            # print(u,v)
             q = np.random.randint(n - 1)
-            # print(q)
             for i in range(q + 1, n):
                 X[u][i], X[v][i] = X[v][i], X[u][i]
             k[u] = 0
             k[v] = 0
     return X
 
-##变异
+
+# 变异
 def vari(X, m, n, p):
     for i in range(m):
         for j in range(n):
             q = np.random.rand()
             if q < p:
-                X[i][j] = np.random.randint(0,2)
+                X[i][j] = np.random.randint(0, 2)
 
     return X
 
@@ -118,8 +119,8 @@ def heredity(s):
     w, n, W, V = table_data(s)
 
     C = init(m, n)
-    S,F = fitness(C,m,n,W,V,w)
-    B, y = best_x(F,S,m)
+    S, F = fitness(C, m, n, W, V, w)
+    B, y = best_x(F, S, m)
     Y = [y]
     for i in range(N):
         p = rate(F)
@@ -131,7 +132,7 @@ def heredity(s):
         if y1 > y:
             y = y1
         Y.append(y)
-    print("最大值为：",y)
+    print("最大值为：", y)
     plt.plot(Y)
     plt.show()
     z = [0 for i in range(n)]
@@ -153,4 +154,5 @@ def heredity(s):
     file_handle.write('\n')
     file_handle.close()
     return w, n, W, V, stime, z, y
+
 # heredity('s')

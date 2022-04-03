@@ -14,10 +14,8 @@ from sort import decrease, increase
 from draw_picture import scatter, barh
 
 
-
 # 1.算法
 def in_main(a_name, choice):
-
     def go(*args):  # 处理事件，*args表示可变参数
         s = comboxlist.get()
         if choice == 1:
@@ -143,7 +141,6 @@ def in_main3(a_name, choice):
     comvalue = tkinter.StringVar()  # 窗体自带的文本，新建一个值
     comboxlist = ttk.Combobox(win, textvariable=comvalue)  # 初始化
     comboxlist["values"] = search.sqlite_read()
-    # comboxlist.current(0)  # 选择第一个
     comboxlist.bind("<<ComboboxSelected>>", go)  # 绑定事件,(下拉列表框被选中时，绑定go()函数)
     comboxlist.pack()
     # 显示文本框
@@ -155,7 +152,6 @@ def in_main3(a_name, choice):
     tabBar.pack(expand=YES, fill=BOTH)
     textArea = tkinter.Text(master=textContainer)
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
-
     win.mainloop()  # 进入消息循环
 
 
@@ -173,6 +169,6 @@ def in_main4(a_name):
     tree.column("解向量", width=220)
     for num in range(len(list)):
         i = len(list) - num - 1
-        tree.insert("", num, text=str(num), values=(str(list[i][0]), str(list[i][1]), str(list[i][2])))  # #给第0行添加数据，索引值可重复
+        tree.insert("", num, text=str(num), values=(str(list[i][0]), str(list[i][1]), str(list[i][2])))  # 给第0行添加数据，索引值可重复
     tree.pack()
     win.mainloop()

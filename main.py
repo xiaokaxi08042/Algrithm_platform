@@ -42,7 +42,7 @@ def inSql(filePath, fileName, textArea):
     for line in f.readlines():
         textArea.insert(INSERT, line)
         list.append(line.strip().split(' '))
-        cu.execute('insert into '+ "'" + fileName + "'" + ' values(?,?,?)', (i, list[i][0], list[i][1]))
+        cu.execute('insert into ' + "'" + fileName + "'" + ' values(?,?,?)', (i, list[i][0], list[i][1]))
         i += 1
     f.close()  # 关闭文件
     cu.close()  # 关闭游标
