@@ -82,7 +82,10 @@ def in_main2(a_name, choice):
 
         def Show_Img():
             global img_png
-            Img = Image.open('./src/picture/' + s + '.png')
+            if choice == 5:
+                Img = Image.open('./src/picture/scatter_' + s + '.png')
+            else:
+                Img = Image.open('./src/picture/barch_' + s + '.png')
             img_png = ImageTk.PhotoImage(Img)
             label_Img = tk.Label(win, image=img_png)
             label_Img.pack(ipady=45)
