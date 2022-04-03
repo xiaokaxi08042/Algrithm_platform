@@ -1,5 +1,6 @@
-import sqlite3      #导入sqlite3
+# sql.py文件在本项目中未用到，该文件用来进行测试学习
 
+import sqlite3      #导入sqlite3
 
 cx = sqlite3.connect('./data.db')  # 创建数据库，如果数据库已经存在，则链接数据库；如果数据库不存在，则先创建数据库，再链接该数据库。
 cu = cx.cursor()           # 定义一个游标，以便获得查询对象。
@@ -8,7 +9,7 @@ s = 'create table if not exists '+ t1 +' (id integer primary key,w integer,v int
 print(s)
 cu.execute(s)  # 创建表，此处须修改表名
 
-fr = open("data/beibao2.in")    # 打开要读取的txt文件
+fr = open("src/data/beibao2.in")    # 打开要读取的txt文件
 list=[]
 i=0
 for line in fr.readlines():

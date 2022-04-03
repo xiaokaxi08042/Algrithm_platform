@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from search import table_data
 
-
+# 散点图
 def scatter(s):
     # s = 'beibao0.in'
     plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -23,10 +23,10 @@ def scatter(s):
     plt.legend()
     plt.yticks(())
     plt.title('散点图')
-    plt.savefig('./picture/'+ s +'.png')  # 保存图片
+    plt.savefig('./src/picture/'+ s +'.png')  # 保存图片
     plt.show()
 
-
+# 柱形图
 def barh(s):
     fig, ax = plt.subplots()
     c, n, w, v = table_data(s)
@@ -37,5 +37,5 @@ def barh(s):
     # print(y)
     y_pos = np.arange(len(w)) + 1
     ax.barh(y_pos, y, color='b', align="center")
-    plt.savefig('./picture/'+ s +'.png')  # 保存图片
+    plt.savefig('./src/picture/'+ s +'.png')  # 保存图片
     plt.show()

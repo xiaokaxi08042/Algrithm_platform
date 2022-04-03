@@ -1,16 +1,14 @@
 import os
 import time
 import sqlite3
-from tkinter import *
-from tkinter.filedialog import *
-from tkinter.ttk import *
 import select_func
+from tkinter import *
+from tkinter.ttk import *
+from search import in_log
+from tkinter.filedialog import *
 
 
 # 打开文件
-from search import in_log
-
-
 def openfile():
     filePath = askopenfilename()  # 全路径
     fileName = os.path.basename(filePath)  # 文件名
@@ -22,7 +20,7 @@ def openfile():
     textArea = Text(master=textContainer)
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
     inSql(filePath, fileName, textArea)
-    time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 执行该操作的时间
     in_log(time1, '导入数据', fileName)
     # 右侧滑动条
     scrollBar = Scrollbar(master=textContainer)

@@ -29,7 +29,7 @@ def in_main(a_name, choice):
         elif choice == 4:
              c, n, w, v, stime, y1, maxvalue = heredity(s)
 
-        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 执行算法的时间
         search.in_log(time1, a_name, s)
         # 显示文本框
         tab = Frame(master=tabBar)
@@ -59,7 +59,6 @@ def in_main(a_name, choice):
     # 显示文本框
     tabBar = Notebook(master=win)
     tab = Frame(master=tabBar)
-    # tabBar.add(tab, text=s)
     textContainer = Labelframe(tab)
     textContainer.pack(expand=YES, fill=BOTH)
     tabBar.pack(expand=YES, fill=BOTH)
@@ -79,11 +78,13 @@ def in_main2(a_name, choice):
             scatter(s)
         elif choice == 6:
             barh(s)
+        time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 执行算法的时间
+        search.in_log(time1, a_name, s)
         global img_png  # 定义全局变量 图像的
 
         def Show_Img():
             global img_png
-            Img = Image.open('./picture/' + s + '.png')
+            Img = Image.open('./src/picture/' + s + '.png')
             img_png = ImageTk.PhotoImage(Img)
             label_Img = tk.Label(win, image=img_png)
             label_Img.pack(ipady=45)

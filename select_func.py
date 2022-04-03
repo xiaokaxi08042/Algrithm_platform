@@ -8,7 +8,7 @@ import follow_root
 def dpAlgrithm():
     choice = 1
     a_name = '动态规划算法'
-    follow_root.in_main(a_name,choice)
+    follow_root.in_main(a_name, choice)
 
 
 # 贪心算法
