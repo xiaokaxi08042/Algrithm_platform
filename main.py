@@ -107,6 +107,9 @@ canvas = tkinter.Canvas(root, width=500, height=300, bg=None)
 image_file = tkinter.PhotoImage(file="./src/picture/2.gif")
 image = canvas.create_image(250, 0, anchor='n', image=image_file)
 canvas.pack()
+#账号与密码文字标签
+alable = tkinter.Label(root, text='欢迎来到算法测试平台！', bg='lightskyblue', fg='white', font=('Arial', 14), width=20, height=2)
+alable.place(relx=0.25, rely=0.35)
 
 # 显示窗口
 root.mainloop()
