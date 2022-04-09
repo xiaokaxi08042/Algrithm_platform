@@ -1,12 +1,16 @@
 import os
+import sys
 import time
 import sqlite3
+import tkinter
+
 import select_func
 from tkinter import *
 from tkinter.ttk import *
 from search import in_log
 from tkinter.filedialog import *
-
+from tkinter.messagebox import *
+from PyQt5.QtWidgets import QMainWindow, QApplication
 
 # 打开文件
 def openfile():
@@ -17,7 +21,7 @@ def openfile():
     textContainer = Labelframe(tab)
     textContainer.pack(expand=YES, fill=BOTH)
     tabBar.pack(expand=YES, fill=BOTH)
-    textArea = Text(master=textContainer)
+    textArea = Text(master=textContainer, background='lightskyblue')
     textArea.pack(side=LEFT, expand=YES, fill=BOTH)
     inSql(filePath, fileName, textArea)
     time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 执行该操作的时间
@@ -52,10 +56,14 @@ def inSql(filePath, fileName, textArea):
 
 
 # 创建窗口：实例化一个窗口对象。
+app = QApplication(sys.argv)
 root = Tk()
 root.geometry('500x400')
 root.title('0/1背包算法求解平台')
-# root.configure(background='pink')
+# root.attributes('-alpha', 0.8)
+# root.configure(background='lightskyblue')
+root.maxsize(500, 300)
+root.minsize(500, 300)
 
 menuBar = Menu(root)
 shujuMenu = Menu(menuBar, tearoff=0)
@@ -79,22 +87,26 @@ menuBar.add_cascade(label="算法求解", menu=suanfaMenu)
 menuBar.add_cascade(label="绘制图形", menu=pictureMenu)
 menuBar.add_cascade(label="排序", menu=sortMenu)
 menuBar.add_cascade(label="日志记录", menu=logMenu)
-suanfaMenu.add_command(label="动态规划", command=select_func.dpAlgrithm, background='pink')
+suanfaMenu.add_command(label="动态规划", command=select_func.dpAlgrithm, background='lightskyblue')
 suanfaMenu.add_command(label="贪心算法", command=select_func.gdAlgrithm, background='pink')
-suanfaMenu.add_command(label="回溯算法", command=select_func.btAlgrithm, background='pink')
+suanfaMenu.add_command(label="回溯算法", command=select_func.btAlgrithm, background='lightskyblue')
 suanfaMenu.add_command(label="遗传算法", command=select_func.ycAlgrithm, background='pink')
-shujuMenu.add_command(label="选择文件", command=openfile, background='pink')
+shujuMenu.add_command(label="选择文件", command=openfile, background='lightskyblue')
 pictureMenu.add_command(label="散点图", command=select_func.sdAlgrithm, background='pink')
-pictureMenu.add_command(label="柱状图", command=select_func.zzAlgrithm, background='pink')
+pictureMenu.add_command(label="柱状图", command=select_func.zzAlgrithm, background='lightskyblue')
 sortMenu.add_command(label="递增排序", command=select_func.dzAlgrithm, background='pink')
-sortMenu.add_command(label="递减排序", command=select_func.djAlgrithm, background='pink')
+sortMenu.add_command(label="递减排序", command=select_func.djAlgrithm, background='lightskyblue')
 logMenu.add_command(label="算法日志", command=select_func.logAlgrithm, background='pink')
 
 tabBar = Notebook(master=root)
 root.configure(menu=menuBar)
+
+
+# 加载图片
+canvas = tkinter.Canvas(root, width=500, height=300, bg=None)
+image_file = tkinter.PhotoImage(file="./src/picture/2.gif")
+image = canvas.create_image(250, 0, anchor='n', image=image_file)
+canvas.pack()
+
 # 显示窗口
 root.mainloop()
-"""
-注意到：该窗口默认的显示位置在哪里，观察我下面的截图。
-窗口默认显示在整个电脑屏幕的左上角，并且窗口大小特别小。
-"""

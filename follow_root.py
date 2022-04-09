@@ -35,7 +35,7 @@ def in_main(a_name, choice):
         textContainer = Labelframe(tab)
         textContainer.pack(expand=YES, fill=BOTH)
         tabBar.pack(expand=YES, fill=BOTH)
-        textArea = tkinter.Text(master=textContainer)
+        textArea = tkinter.Text(master=textContainer, background="lightskyblue")
         textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))
@@ -129,7 +129,7 @@ def in_main3(a_name, choice):
         textContainer = Labelframe(tab)
         textContainer.pack(expand=YES, fill=BOTH)
         tabBar.pack(expand=YES, fill=BOTH)
-        textArea = tkinter.Text(master=textContainer)
+        textArea = tkinter.Text(master=textContainer, background="lightskyblue")
         textArea.pack(side=LEFT, expand=YES, fill=BOTH)
 
         textArea.insert(INSERT, '\n背包容量：' + str(c) + '\n物品个数：' + str(n))

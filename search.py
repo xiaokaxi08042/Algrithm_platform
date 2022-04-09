@@ -2,7 +2,7 @@
 import sqlite3
 
 
-# 获取表名
+# 获取数据库中的所有表名
 def sqlite_read():
     """python读取sqlite数据库文件
     """
@@ -21,7 +21,7 @@ def sqlite_read():
 # sqlite_read()
 
 
-#  获取表中数据
+#  获取数据库中选中的表中的数据
 def table_data(s):
     mydb = sqlite3.connect('datafile.db')  # 链接数据库
     cur = mydb.cursor()  # 创建游标cur来执行SQL语句

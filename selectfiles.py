@@ -1,7 +1,5 @@
-# coding:utf-8
 import sqlite3
-import tkinter
-from tkinter import ttk
+
 
 '''
 def bb():
@@ -34,28 +32,3 @@ def huoqu(com):
     '''
     sql_col_name=str(col_names[0]).replace('\'','')
     '''
-
-'''
-class drop_down_box:
-    def __init__(self):
-        self.win = Tk()
-        self.win.title("算法求解")
-        self.win.geometry("600x200")
-        下拉框样式
-        # 创建下拉列表，设置下拉列表中的值
-        self.normal_ddl = Label(self.win, text='选择文件：')
-        self.ddl = ttk.Combobox(self.win)
-        self.ddl['value'] = ('下拉选项1', '下拉选项2', '下拉选项3', '下拉选项4')
-
-        grid布局
-        self.normal_ddl.grid(row=1, column=1, sticky='E')
-        self.ddl.grid(row=1, column=2, sticky='NW')
-        self.win.mainloop()
-
-    def select(self):
-        print(self.ddl.get())
-
-
-def box():
-    drop_down_box()
-'''
